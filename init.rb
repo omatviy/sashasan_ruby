@@ -1,5 +1,9 @@
-require_relative "cart.rb"
-require_relative "item.rb"
+#require_relative "cart.rb"
+#require_relative "item.rb"
+Dir["*.rb"].each do |lib| 
+    p lib
+    require_relative lib
+end    
 
 item1 = Item.new({ price: 25, weight: 120, name: "Car" })
 item2 = Item.new({ weight: 120, name: "Car" })

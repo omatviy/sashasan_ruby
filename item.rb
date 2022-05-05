@@ -1,5 +1,5 @@
 class Item
-  attr_accessor :name, :weight, :price
+  attr_accessor :name, :price
 
   def initialize(options = {})
     @name = options[:name] if options[:name]

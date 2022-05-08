@@ -1,13 +1,4 @@
-require_relative "item_container.rb"
-
-class Cart
-  attr_reader :items
-  include ItemContainer
-
-  def initialize
-    @items = []
-  end
-
+module ItemContainer
   def add_item(item)
     @items << item
   end

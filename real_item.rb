@@ -26,4 +26,9 @@ class RealItem < Item
     end
   end
 
+  #def self.discount
+    #Time.now.month == 6 ? 0.4 : 0.1
+  #  super
+  #end
+
 end

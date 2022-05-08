@@ -1,16 +1,16 @@
 class Item
-  attr_accessor :name, :price
+  attr_accessor :name, :real_price
 
   def initialize(options = {})
     @name = options[:name] if options[:name]
-    @price = options[:price] if options[:price]
+    @real_price = options[:real_price] if options[:real_price]
   end
 
   def info
     if block_given?
       puts "Item info start:"
       yield @name, "item name:"
-      yield @price, "item price:"
+      yield @real_price, "item price:"
       puts "Item info finish"
     else
       puts "Nothing to show"
@@ -30,7 +30,7 @@ class Item
   end
 
   def price
-    @price - @price * self.class.discount
+    @real_price - @real_price * self.class.discount if @real_price
   end
 
 end

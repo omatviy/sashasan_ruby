@@ -10,7 +10,10 @@ class Order
     @items = []
   end
 
-  def delete_invalid_items
-    @items.delete_if { |i| i.price.nil? }
+  def self.price
+    100
+  end
+
+  def notification
   end
 end

@@ -5,14 +5,14 @@ Dir["*.rb"].each do |lib|
     require_relative lib
 end    
 
-item1 = VirtualItem.new({ real_price: 25, name: "Car1" })
-item2 = RealItem.new({ real_price: 25, weight: 120, name: "Car2" })
-item3 = RealItem.new({ weight: 125, name: "Car3" })
+item1 = VirtualItem.new({ real_price: 125, name: "Car1" })
+item2 = RealItem.new({ real_price: 135, weight: 120, name: "Car2" })
+item3 = RealItem.new({ real_price: 45, weight: 125, name: "Car3" })
 
-item3 = RealItem.new
-item3.set_value do |i|
+item4 = RealItem.new
+item4.set_value do |i|
   i.name = "train"
-  i.real_price = 30
+  i.real_price = 130
   i.weight = 150
 end
 
@@ -24,15 +24,20 @@ p cart.items
 cart.add_item item1
 cart.add_item item2
 cart.add_item item3
+cart.add_item item4
 
-puts "="*25
 p cart.items
-puts "="*25
-cart.delete_invalid_items
-p cart.items
-puts "="*25
+
+p Cart.min_price
+p Order.min_price
+# puts "="*25
+# p cart.items
+# puts "="*25
+# cart.delete_invalid_items
+# p cart.items
+# puts "="*25
 
 
-p item1.respond_to? :weight
+# p item1.respond_to? :weight
 
-p item2.respond_to? :weight
+# p item2.respond_to? :weight

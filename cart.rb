@@ -10,4 +10,8 @@ class Cart
     @items = []
   end
 
+  def self.min_price
+    20
+  end
+
 end

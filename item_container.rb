@@ -1,29 +1,47 @@
 module ItemContainer
   #  module Manager
-  def add_item(item)
-    @items << item
-  end
+  module ClassMethods
+    
+    MIN_PRICE = 100
 
-  def remove_item
-    @items.pop
-  end
-
-  def validate
-    @items.each do |i|
-      puts "item has no price" if i.price.nil?
+    def min_price
+      MIN_PRICE
     end
   end
 
-  def delete_invalid_items
-    @items.delete_if { |i| i.price.nil? }
+  module InstanceMethods
+    def add_item(item)
+      puts self.class.name
+      @items << item unless item.price < self.class.min_price
+    end
+
+    def remove_item
+      @items.pop
+    end
+
+    def validate
+      @items.each do |i|
+        puts "item has no price" if i.price.nil?
+      end
+    end
+
+    def delete_invalid_items
+      @items.delete_if { |i| i.price.nil? }
+    end
+
+    def count_valid_items
+      @items.count { |item| item.price }
+    end
   end
 
   # end
 
   #  module Info
-  def count_valid_items
-    @items.count { |item| item.price }
-  end
 
   #  end
+
+  def self.included(class_instance)
+    class_instance.extend(ClassMethods)
+    class_instance.class_eval {include InstanceMethods}
+  end
 end

@@ -1,6 +1,6 @@
 require_relative "item_container.rb"
 
-class Cart
+class Order
   attr_reader :items
   # include ItemContainer::Manager
   include ItemContainer
@@ -10,4 +10,7 @@ class Cart
     @items = []
   end
 
+  def delete_invalid_items
+    @items.delete_if { |i| i.price.nil? }
+  end
 end

@@ -4,6 +4,8 @@ require_relative "virtual_item.rb"
 require_relative "item_container.rb"
 require_relative "cart.rb"
 require_relative "order.rb"
+require_relative "string.rb"
+
 
 # Dir["*.rb"].each do |lib| 
 #     p lib

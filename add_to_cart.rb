@@ -1,3 +1,4 @@
+# run with ruby add_to_cart.rb sasha Car2 Car3
 require_relative "init.rb"
 
 owner = ARGV.delete_at(0)
@@ -21,3 +22,4 @@ cart.items.each do |i|
   puts "=" * 25
   i.info { |info, name| puts "#{name} #{info}" }
 end
+#p cart.items

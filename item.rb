@@ -32,5 +32,4 @@ class Item
   def price
     @real_price - @real_price * self.class.discount if @real_price
   end
-
 end

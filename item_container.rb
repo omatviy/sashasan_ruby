@@ -29,6 +29,10 @@ module ItemContainer
       @items.delete_if { |i| i.price.nil? }
     end
 
+    def delete_items
+      @items.clear
+    end
+
     def count_valid_items
       @items.count { |item| item.price }
     end

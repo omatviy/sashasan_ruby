@@ -11,8 +11,11 @@ p @items
 end
 
 p cart.items
-
-cart.save_to_file
+begin
+  cart.save_to_file
+rescue ItemNotSupported => exception
+  puts "#{exception.message} ItemNotSupported You have virtual item in your cart"
+end
 
 cart.delete_items
 p cart.items

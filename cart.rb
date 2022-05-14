@@ -1,4 +1,5 @@
 require_relative "item_container.rb"
+require_relative "item_not_supported.rb"
 
 class Cart
   attr_reader :items
@@ -19,7 +20,7 @@ class Cart
     puts "save_to_file start"
     File.open("#{@owner}_cart.txt", "w") do |f|
       @items.each do |item|
-        raise "Virtual Item is not supported" if item.class == VirtualItem
+        raise ItemNotSupported if item.class == VirtualItem
         f.puts item
       end
     end

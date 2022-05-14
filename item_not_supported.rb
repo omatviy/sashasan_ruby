@@ -1,1 +1,1 @@
-class ItemNotSupported < StandartError; end
+class ItemNotSupported < StandardError; end

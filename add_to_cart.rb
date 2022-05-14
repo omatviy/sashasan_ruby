@@ -22,4 +22,8 @@ cart.items.each do |i|
   puts "=" * 25
   i.info { |info, name| puts "#{name} #{info}" }
 end
-#p cart.items
+p cart.items
+
+owner2 = "#{owner}1"
+cart2 = Cart.new(owner2)
+cart2.read_from_file

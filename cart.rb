@@ -32,36 +32,22 @@ class Cart
 
     file_path = "#{@owner}_cart.txt"
 
-    return unless File.exist?("#{@owner}_cart.txt")
+    begin
+      f = File.new(file_path, "r:UTF-8")
+      lines = f.readlines
+      p lines
 
-    f = File.new(file_path, "r:UTF-8")
-    lines = f.readlines
-    p lines
-    # lines = File.readlines("#{@owner}_cart.txt", "r")
-    # p lines
-    # puts "\nlines=#{lines.size}"
-    # puts lines
-
-    # lines.delete_if { |l| !l.include?(":") }
-    # puts "\nlines=#{lines.size}"
-    # p lines
-    # lines.map! { |l| l.chomp.split(":") }
-
-    # lines.each do |l|
-    #   item = RealItem.new
-    #   item.set_value do |i|
-    #     i.name = l[0]
-    #     i.real_price = l[1].to_i
-    #     i.weight = l[2].to_i
-    #   end
-    #   @items << item
-    # end
-    lines.each do |l|
-      p l
-      @items << l.to_real_item
+      lines.each do |l|
+        @items << l.to_real_item
+      end
+      @items.uniq!
+      p @items
+    rescue Errno::ENOENT => e
+      puts "Exception #{e.message}"
+      File.open("#{@owner}_cart.txt", "w") {}
+      puts "File #{file_path} was created"
     end
-    @items.uniq!
-    p @items
+    
     puts "read_from_file finish"
   end
 end

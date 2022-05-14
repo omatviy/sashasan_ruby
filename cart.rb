@@ -19,8 +19,7 @@ class Cart
     puts "save_to_file start"
     File.open("#{@owner}_cart.txt", "w") do |f|
       @items.each do |item|
-        p item
-        puts item
+        raise "Virtual Item is not supported" if item.class == VirtualItem
         f.puts item
       end
     end
@@ -47,7 +46,7 @@ class Cart
       File.open("#{@owner}_cart.txt", "w") {}
       puts "File #{file_path} was created"
     end
-    
+
     puts "read_from_file finish"
   end
 end

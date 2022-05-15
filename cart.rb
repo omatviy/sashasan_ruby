@@ -6,6 +6,8 @@ class Cart
   # include ItemContainer::Manager
   include ItemContainer
 
+  UNSUPPORTED_ITEMS = [VirtualItem, AntiqueItem]
+
   def initialize(owner)
     puts "Cart init"
     @items = []
@@ -20,7 +22,7 @@ class Cart
     puts "save_to_file start"
     File.open("#{@owner}_cart.txt", "w") do |f|
       @items.each do |item|
-        raise ItemNotSupported if item.class == VirtualItem
+        raise ItemNotSupported if UNSUPPORTED_ITEMS.include?(item.class)
         f.puts item
       end
     end
@@ -44,7 +46,7 @@ class Cart
       p @items
     rescue Errno::ENOENT => e
       puts "Exception #{e.message}"
-      File.open("#{@owner}_cart.txt", "w") {}
+      File.open("#{@owner}_cart.txt", "w") { }
       puts "File #{file_path} was created"
     end
 

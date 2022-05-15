@@ -1,10 +1,11 @@
 require_relative "item.rb"
 require_relative "real_item.rb"
+require_relative "string.rb"
 require_relative "virtual_item.rb"
+require_relative "antique_item.rb"
 require_relative "item_container.rb"
 require_relative "cart.rb"
 require_relative "order.rb"
-require_relative "string.rb"
 
 
 # Dir["*.rb"].each do |lib| 
@@ -16,8 +17,9 @@ require_relative "string.rb"
 item1 = VirtualItem.new({ real_price: 125, name: "Car1" })
 item2 = RealItem.new({ real_price: 135, weight: 120, name: "Car2" })
 item3 = RealItem.new({ real_price: 45, weight: 125, name: "Car3" })
+item4 = AntiqueItem.new({ real_price: 140, name: "CarAnt" })
 
-@items << item1 << item2 << item3
+@items << item1 << item2 << item3 << item4
 
 # item4 = RealItem.new
 # item4.set_value do |i|

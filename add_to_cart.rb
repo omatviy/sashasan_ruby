@@ -1,4 +1,5 @@
 # run with ruby add_to_cart.rb sasha Car2 Car3
+# ruby add_to_cart.rb sasha Car2 Car3 CarAnt
 require_relative "init.rb"
 
 owner = ARGV.delete_at(0)
@@ -14,7 +15,7 @@ p cart.items
 begin
   cart.save_to_file
 rescue ItemNotSupported => exception
-  puts "#{exception.message} ItemNotSupported You have virtual item in your cart"
+  puts "#{exception.message} ItemNotSupported You have item from #{Cart::UNSUPPORTED_ITEMS} in your cart"
 end
 
 cart.delete_items

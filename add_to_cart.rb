@@ -28,6 +28,8 @@ cart.items.each do |i|
 end
 p cart.items
 
-owner2 = "#{owner}1"
-cart2 = Cart.new(owner2)
-cart2.read_from_file
+# owner2 = "#{owner}1"
+# cart2 = Cart.new(owner2)
+# cart2.read_from_file
+
+p cart.all_cars

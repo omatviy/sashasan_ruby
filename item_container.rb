@@ -1,7 +1,6 @@
 module ItemContainer
   #  module Manager
   module ClassMethods
-    
     MIN_PRICE = 100
 
     def min_price
@@ -36,6 +35,24 @@ module ItemContainer
     def count_valid_items
       @items.count { |item| item.price }
     end
+
+    def method_missing(method_name)
+      if method_name =~ /^all_/
+        show_all_item_with_name(
+          method_name.to_s
+            .sub(/^all_/, "")
+            .chomp('s')
+        )
+      else
+        super
+      end
+    end
+
+    private
+
+    def show_all_item_with_name(name)
+      @items.map { |i| i unless i.name.downcase.scan(name).empty? }.compact
+    end
   end
 
   # end
@@ -46,6 +63,6 @@ module ItemContainer
 
   def self.included(class_instance)
     class_instance.extend(ClassMethods)
-    class_instance.class_eval {include InstanceMethods}
+    class_instance.class_eval { include InstanceMethods }
   end
 end

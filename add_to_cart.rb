@@ -25,6 +25,7 @@ cart.read_from_file
 cart.items.each do |i|
   puts "=" * 25
   i.info { |info, name| puts "#{name} #{info}" }
+  puts "=" * 25
 end
 p cart.items
 

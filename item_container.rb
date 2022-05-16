@@ -37,21 +37,34 @@ module ItemContainer
     end
 
     def method_missing(method_name)
+      puts "method method_missing start: #{method_name} is missed"
       if method_name =~ /^all_/
-        show_all_item_with_name(
-          method_name.to_s
-            .sub(/^all_/, "")
-            .chomp('s')
-        )
+        puts "starting ...: over #{method_name}"
+        name = method_name.to_s
+          .sub(/^all_/, "")
+          .chomp("s")
+        puts "name = #{name}"
+        return show_all_item_with_name(name)
       else
-        super
+        return super
       end
+      puts "method method_missing finish: #{method_name} is missed"      
     end
 
     private
 
     def show_all_item_with_name(name)
-      @items.map { |i| i unless i.name.downcase.scan(name).empty? }.compact
+      puts "show_all_item_with_name: start"
+
+      puts @items
+      result = @items.map do |i| 
+        # p i.name.downcase
+        # p i.name.downcase.scan(name).empty?
+        i unless i.name.downcase.scan(name).empty? 
+      end
+      # p result
+      puts "show_all_item_with_name: finish"      
+      result
     end
   end
 

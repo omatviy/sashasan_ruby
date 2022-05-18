@@ -61,11 +61,8 @@ module ItemContainer
         # p i.name.downcase
         # p i.name.downcase.scan(name).empty?
         i unless i.name.downcase.scan(name).empty? 
-<<<<<<< HEAD
       end
-=======
-      end.compact
->>>>>>> 620c623009f985471c1f3797217bc61fa69b7eb0
+    
       # p result
       puts "show_all_item_with_name: finish"      
       result

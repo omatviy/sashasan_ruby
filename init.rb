@@ -1,11 +1,25 @@
 require_relative "store_application.rb"
 
-# Dir["*.rb"].each do |lib| 
+# Dir["*.rb"].each do |lib|
 #     p lib
 #     require_relative lib
-# end    
-StoreApplication.new
-StoreApplication.new
+# end
+# StoreApplication.new
+# StoreApplication.new
+
+StoreApplication.set do |app|
+  app.name = "Ruby app"
+  app.environment = :development
+
+  app.admin do |admin|
+    p admin.name
+    admin.login = "admin"
+    admin.email = "admin@mail.com"
+  end
+end
+
+
+p StoreApplication
 
 @items = []
 item1 = VirtualItem.new({ real_price: 125, name: "Car1" })
@@ -54,7 +68,6 @@ p @items.second.price
 # # cart.delete_invalid_items
 # # p cart.items
 # # puts "="*25
-
 
 # # p item1.respond_to? :weight
 

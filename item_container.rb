@@ -60,7 +60,7 @@ module ItemContainer
       result = @items.map do |i| 
         # p i.name.downcase
         # p i.name.downcase.scan(name).empty?
-        i unless i.name.downcase.scan(name).empty? 
+        i.to_s unless i.name.downcase.scan(name).empty? 
       end
     
       # p result

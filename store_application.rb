@@ -37,6 +37,7 @@ class StoreApplication
         puts "StoreApplication: Can't twice"
       end
       @store ||= self
+      @store.freeze
     end
 
     def admin(&block)
@@ -60,6 +61,7 @@ class StoreApplication
             puts "Admin: Can't twice"
           end
           @store ||= self
+          @store.freeze
         end
 
         def inspect

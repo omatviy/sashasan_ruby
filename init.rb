@@ -12,14 +12,19 @@ StoreApplication.set do |app|
   app.environment = :development
 
   app.admin do |admin|
-    p admin.name
+    #p admin.name
     admin.login = "admin"
     admin.email = "admin@mail.com"
   end
 end
 
-
 p StoreApplication
+unless StoreApplication.frozen?
+  StoreApplication.name = "Ruby app new"
+  StoreApplication.admin.email = "new@gmail.com"
+  puts "Some changes:"
+  p StoreApplication
+end
 
 @items = []
 item1 = VirtualItem.new({ real_price: 125, name: "Car1" })

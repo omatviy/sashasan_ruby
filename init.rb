@@ -47,9 +47,14 @@ p @items.second.respond_to? :price
 p @items.second.send :price
 p @items.second.price
 
-order = Order.new
-@items.each {|i| order.add_item i}
-order.place
+order1 = Order.new
+# order2 = Order.new
+@items.each {|i| order1.add_item i}
+# @items.each {|i| order2.add_item i}
+
+order1.place
+
+# order2.place
 
 # item4 = RealItem.new
 # item4.set_value do |i|

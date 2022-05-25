@@ -33,6 +33,7 @@ class StoreApplication
         require_relative "order.rb"
         #for using second third ...
         require "active_support/all"
+        require "pony"
       else
         puts "StoreApplication: Can't twice"
       end
@@ -49,25 +50,25 @@ class StoreApplication
       puts "environment = #{@environment}" if @environment
       p Admin
     end
+  end
 
-    class Admin
-      class << self
-        attr_accessor :email, :login
+  class Admin
+    class << self
+      attr_accessor :email, :login, :pass
 
-        def new(&block)
-          unless @store
-            yield self
-          else
-            puts "Admin: Can't twice"
-          end
-          @store ||= self
-          @store.freeze
+      def new(&block)
+        unless @store
+          yield self
+        else
+          puts "Admin: Can't twice"
         end
+        @store ||= self
+        @store.freeze
+      end
 
-        def inspect
-          puts "email = #{@email}" if @email
-          puts "login = #{@login}" if @login
-        end
+      def inspect
+        puts "email = #{@email}" if @email
+        puts "login = #{@login}" if @login
       end
     end
   end

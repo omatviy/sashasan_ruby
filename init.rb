@@ -14,7 +14,8 @@ StoreApplication.set do |app|
   app.admin do |admin|
     #p admin.name
     admin.login = "admin"
-    admin.email = "admin@mail.com"
+    admin.email = "omatviy@gmail.com"
+    admin.pass = "dlde jqwd mchn xfwp"
   end
 end
 
@@ -45,6 +46,10 @@ p @items.second.respond_to? :price
 
 p @items.second.send :price
 p @items.second.price
+
+order = Order.new
+@items.each {|i| order.add_item i}
+order.place
 
 # item4 = RealItem.new
 # item4.set_value do |i|

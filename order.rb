@@ -32,6 +32,7 @@ class Order
         subject: "New order",
         body: "Check your admin page",
       })
+      15.times { puts "def place is working"; sleep 0.5 }
     end
 
     start = 0
@@ -40,6 +41,5 @@ class Order
       puts "." + start.to_s
       sleep 0.5
     end
-    5.times { puts "def place is working" }
   end
 end

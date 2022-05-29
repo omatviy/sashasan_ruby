@@ -15,7 +15,7 @@ StoreApplication.set do |app|
     #p admin.name
     admin.login = "admin"
     admin.email = "omatviy@gmail.com"
-    admin.pass = "dlde jqwd mchn xfwp"
+    admin.pass = ""
   end
 end
 
